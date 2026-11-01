@@ -158,7 +158,22 @@ $('importFile').onchange=async e=>{
  for(const w of data.wishes||[]){const {id,...rest}=w;await put(WISH,rest)}await render();toast('Yedek geri yüklendi');
  }catch(err){alert('Yedek okunamadı: '+err.message)}finally{e.target.value=''}
 };
-((async()=>{
+
+(async()=>{
+  try{
+    if(!window.indexedDB){
+      throw new Error('Safari IndexedDB desteği kullanılamıyor.');
+    }
+
+    db=await openDB();
+    await render();
+
+  }catch(e){
+    console.error('Garage başlatma hatası:',e);
+    alert('Uygulama başlatılamadı: '+e.message);
+  }
+})();
+
  try{
   if(!window.indexedDB){
    throw new Error('Safari IndexedDB desteği kullanılamıyor.');
