@@ -129,7 +129,6 @@ notes:$('fNotes').value.trim(),
 photos:draftPhotos
 };
 if(editingId!==null) car.id=editingId;
- ||1),price:Number($('fPrice').value)||0,date:$('fDate').value,condition:$('fCondition').value,notes:$('fNotes').value.trim(),photos:draftPhotos};
  const cars=await all(STORE), dup=cars.find(c=>c.id!==editingId&&key(c)===key(car));
  if(dup){$('duplicateNotice').hidden=false;$('duplicateNotice').textContent=`Mükerrer kontrolü: Garajında "${dup.name}" kaydı zaten var. Renk ve model kodunu kontrol et. Farklı varyantsa bilgileri ayırt edici şekilde gir.`;return;}
  await put(STORE,car);$('carDialog').close();await render();toast(editingId?'Araç güncellendi':'Araç garaja eklendi');
