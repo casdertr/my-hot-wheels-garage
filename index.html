@@ -157,22 +157,15 @@ $('importFile').onchange=async e=>{
  for(const c of data.cars){const photos=[];for(const p of c.photos||[]){const r=await fetch(p);photos.push(await r.blob())}const {id,...rest}=c;await put(STORE,{...rest,photos});}
  for(const w of data.wishes||[]){const {id,...rest}=w;await put(WISH,rest)}await render();toast('Yedek geri yüklendi');
  }catch(err){alert('Yedek okunamadı: '+err.message)}finally{e.target.value=''}
-};
- 
 (async()=>{
   try{
     if(!window.indexedDB){
       throw new Error('IndexedDB kullanılamıyor.');
-    }
-
     db = await openDB();
     await render();
-
   }catch(e){
     console.error('Garage başlatma hatası:', e);
     alert('Uygulama başlatılamadı: ' + e.message);
-  }
-})();
 </script>
 </body>
 </html>
