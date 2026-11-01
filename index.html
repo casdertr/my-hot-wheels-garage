@@ -1,171 +1,472 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#111318">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="My HW Garage">
-<link rel="manifest" href="manifest.webmanifest">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101115">
 <title>My Hot Wheels Garage</title>
 <style>
-:root{color-scheme:dark;--bg:#101115;--panel:#1b1c22;--panel2:#24252c;--gold:#dfbd7d;--muted:#a7a39a;--line:#373840;--red:#c52d32;--white:#f4f0e8}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#343039 0,#101115 50%);color:var(--white);font:15px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:env(safe-area-inset-top) 14px calc(86px + env(safe-area-inset-bottom))}
-button,input,select,textarea{font:inherit}button{cursor:pointer}.app{max-width:760px;margin:auto}.top{display:flex;align-items:center;justify-content:space-between;padding:22px 4px 14px}.eyebrow{font-size:10px;letter-spacing:2px;color:var(--gold);font-weight:800}.brand{font-size:22px;line-height:1.05;font-weight:900;letter-spacing:.4px;margin-top:5px}.brand span{color:var(--gold)}.mark{width:48px;height:48px;border:1px solid #65543b;border-radius:15px;display:grid;place-items:center;color:var(--gold);font-size:25px;background:linear-gradient(145deg,#333039,#17181d)}
-.hero{border:1px solid #514432;border-radius:20px;overflow:hidden;background:linear-gradient(115deg,#29262a,#17181d 65%);padding:20px;position:relative;min-height:132px}.hero:after{content:"HW";position:absolute;right:12px;bottom:-25px;font-size:110px;font-weight:1000;color:#ffffff08;letter-spacing:-10px}.hero h1{font-size:20px;margin:0 0 7px;max-width:230px}.hero p{color:#c2b9aa;font-size:12px;margin:0;max-width:230px;line-height:1.5}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:13px 0 22px}.stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:13px 11px}.stat strong{display:block;font-size:23px;color:var(--gold)}.stat small{color:var(--muted);font-size:11px}.sectionhead{display:flex;align-items:center;justify-content:space-between;margin:18px 2px 11px}.sectionhead h2{font-size:18px;margin:0}.btn{border:0;border-radius:12px;padding:11px 14px;font-weight:750;background:var(--gold);color:#211b12}.btn.secondary{background:var(--panel2);color:var(--white);border:1px solid var(--line)}.btn.danger{background:#52272a;color:#ffd8d8}.btn.small{padding:8px 10px;font-size:12px}.search{width:100%;padding:13px 14px;border-radius:13px;background:#1a1b20;border:1px solid var(--line);color:white;outline:none}.search:focus,input:focus,select:focus,textarea:focus{border-color:var(--gold)}.filters{display:flex;gap:7px;overflow:auto;padding:10px 0 13px}.chip{white-space:nowrap;border:1px solid var(--line);border-radius:99px;background:transparent;color:#c9c4ba;padding:7px 12px;font-size:12px}.chip.active{background:#423927;color:var(--gold);border-color:#806b45}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.car{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;min-width:0}.photo{height:132px;background:linear-gradient(145deg,#33343a,#191a1f);display:grid;place-items:center;color:#888;overflow:hidden}.photo img{width:100%;height:100%;object-fit:cover}.photo .placeholder{font-size:36px;color:#9a835a}.carbody{padding:11px}.carname{font-weight:800;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{color:var(--muted);font-size:11px;margin-top:5px;min-height:15px}.tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:9px}.tag{font-size:9px;color:var(--gold);border:1px solid #625239;padding:4px 6px;border-radius:6px}.carfoot{display:flex;justify-content:space-between;align-items:center;margin-top:10px}.price{font-size:12px;font-weight:800}.iconbtn{border:1px solid var(--line);background:#292a30;color:#ddd;border-radius:8px;padding:6px 8px}.empty{border:1px dashed #55545a;border-radius:15px;padding:28px 15px;text-align:center;color:var(--muted);grid-column:1/-1}.empty b{display:block;color:var(--white);margin-bottom:6px}.bottom{position:fixed;bottom:0;left:0;right:0;padding:9px 14px calc(9px + env(safe-area-inset-bottom));background:#111217ed;backdrop-filter:blur(18px);border-top:1px solid #33343b;display:flex;justify-content:center;z-index:5}.nav{display:flex;justify-content:space-around;width:100%;max-width:600px}.nav button{background:none;border:0;color:#99958e;font-size:10px;display:grid;gap:4px;justify-items:center;padding:4px 12px}.nav button.active{color:var(--gold)}.nav i{font-style:normal;font-size:20px}
-dialog{border:1px solid #57504a;border-radius:20px;background:#1b1c22;color:var(--white);width:min(560px,calc(100% - 24px));max-height:88vh;padding:0;box-shadow:0 20px 70px #000b}dialog::backdrop{background:#000a;backdrop-filter:blur(4px)}.modalhead{padding:17px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.modalhead h2{margin:0;font-size:18px}.modalbody{padding:17px;overflow:auto;max-height:calc(88vh - 65px)}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.field{display:grid;gap:6px;margin-bottom:12px}.field.full{grid-column:1/-1}.field label{font-size:11px;color:var(--muted);font-weight:700}.field input,.field select,.field textarea{width:100%;padding:12px;border-radius:10px;border:1px solid var(--line);background:#111217;color:white;min-width:0}.field textarea{min-height:65px;resize:vertical}.photos{display:flex;gap:9px;flex-wrap:wrap}.photoadd{width:92px;height:92px;border:1px dashed #777;border-radius:12px;display:grid;place-items:center;background:#111217;color:var(--gold);overflow:hidden;position:relative}.photoadd img{width:100%;height:100%;object-fit:cover}.photoadd input{position:absolute;inset:0;opacity:0;width:100%}.hint{color:var(--muted);font-size:11px;line-height:1.45}.actions{display:flex;gap:8px;margin-top:12px}.actions>*{flex:1}.notice{padding:11px 12px;border-radius:10px;background:#392d1d;color:#f2d8a6;font-size:12px;line-height:1.4;margin:10px 0}.page{display:none}.page.active{display:block}.listrow{background:var(--panel);padding:14px;border:1px solid var(--line);border-radius:13px;margin-bottom:9px;display:flex;justify-content:space-between;align-items:center;gap:10px}.listrow small{display:block;color:var(--muted);margin-top:4px}.toast{position:fixed;left:50%;bottom:95px;transform:translateX(-50%);background:#eee3ce;color:#211b12;padding:11px 16px;border-radius:12px;font-size:13px;font-weight:700;z-index:10;display:none;max-width:90%;text-align:center}
-@media(min-width:600px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.photo{height:160px}}
+:root{--bg:#101115;--panel:#1b1c22;--gold:#dfbd7d;--muted:#aaa49a;--line:#383940;--white:#f5f0e8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--white);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:15px 14px 95px}
+.app{max-width:760px;margin:auto}
+header{display:flex;justify-content:space-between;align-items:center;padding:15px 3px 20px}
+.eyebrow{color:var(--gold);font-size:10px;letter-spacing:2px;font-weight:bold}
+.brand{font-size:21px;font-weight:900;margin-top:5px}
+.brand span{color:var(--gold)}
+.logo{width:46px;height:46px;border:1px solid #705c3e;border-radius:14px;display:grid;place-items:center;font-size:25px;color:var(--gold)}
+.hero{padding:20px;border-radius:18px;border:1px solid #514432;background:linear-gradient(120deg,#302b2d,#191a20)}
+.hero h2{font-size:20px;margin:0 0 7px}
+.hero p{font-size:12px;color:#c4bbaa;margin:0;line-height:1.5}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:13px 0 22px}
+.stat{background:var(--panel);border:1px solid var(--line);padding:13px 9px;border-radius:13px}
+.stat strong{display:block;color:var(--gold);font-size:21px}
+.stat small{font-size:10px;color:var(--muted)}
+.sectionhead{display:flex;justify-content:space-between;align-items:center;margin:18px 2px 12px}
+h2{font-size:18px}
+.btn{border:0;border-radius:10px;padding:11px 14px;background:var(--gold);color:#201a11;font-weight:bold}
+.btn.secondary{background:#292a30;color:white;border:1px solid var(--line)}
+.btn.danger{background:#54292c;color:white}
+.btn.small{padding:8px 10px;font-size:12px}
+input,select,textarea{width:100%;padding:12px;border-radius:10px;border:1px solid var(--line);background:#17181d;color:white;font:inherit;outline:none;margin-top:5px}
+input:focus,select:focus,textarea:focus{border-color:var(--gold)}
+label{display:block;color:var(--muted);font-size:12px;margin-top:12px}
+.filters{display:flex;gap:7px;overflow-x:auto;padding:11px 0}
+.chip{white-space:nowrap;border:1px solid var(--line);border-radius:30px;padding:7px 12px;background:transparent;color:#ccc;font-size:12px}
+.chip.active{background:#423927;color:var(--gold);border-color:#806b45}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.car{background:var(--panel);border:1px solid var(--line);border-radius:15px;overflow:hidden}
+.photo{height:130px;background:#292a30;display:grid;place-items:center;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover}
+.placeholder{font-size:38px;color:var(--gold)}
+.carbody{padding:11px}
+.carname{font-size:14px;font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.meta{font-size:11px;color:var(--muted);margin-top:5px}
+.tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:9px}
+.tag{font-size:9px;color:var(--gold);border:1px solid #625239;padding:4px 6px;border-radius:6px}
+.carfoot{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.price{font-size:12px;font-weight:bold}
+.page{display:none}
+.page.active{display:block}
+.empty{grid-column:1/-1;text-align:center;padding:30px 12px;border:1px dashed #555;border-radius:15px;color:var(--muted)}
+.listrow{background:var(--panel);border:1px solid var(--line);padding:13px;border-radius:12px;margin-bottom:9px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.bottom{position:fixed;bottom:0;left:0;right:0;z-index:5;background:#111217f2;border-top:1px solid var(--line);padding:10px 10px 22px}
+.nav{display:flex;justify-content:space-around;max-width:600px;margin:auto}
+.nav button{background:none;border:0;color:#999;font-size:10px;display:grid;gap:4px;justify-items:center;padding:3px 10px}
+.nav button.active{color:var(--gold)}
+.nav i{font-style:normal;font-size:20px}
+.modal{display:none;position:fixed;inset:0;z-index:10;background:#000b;align-items:center;justify-content:center;padding:15px}
+.modal.open{display:flex}
+.modalbox{width:100%;max-width:500px;max-height:90vh;overflow:auto;background:#1b1c22;border:1px solid #625239;border-radius:18px;padding:18px}
+.modalhead{display:flex;justify-content:space-between;align-items:center}
+.modalhead h2{margin:0}
+.close{background:none;border:0;color:white;font-size:25px}
+.formactions{display:flex;gap:8px;margin-top:17px}
+.formactions button{flex:1}
+.preview{width:100%;max-height:180px;object-fit:contain;margin-top:10px;border-radius:10px}
+.note{font-size:11px;color:var(--muted);line-height:1.5}
+hr{border:0;border-top:1px solid var(--line);margin:18px 0}
+@media(max-width:360px){.grid{grid-template-columns:1fr}.photo{height:170px}}
 </style>
 </head>
 <body>
 <div class="app">
-<header class="top"><div><div class="eyebrow">DIECAST COLLECTOR CLUB</div><div class="brand">MY HOT WHEELS<br><span>GARAGE</span></div></div><div class="mark">🏎</div></header>
-<section class="hero"><h1>Koleksiyonun, senin garajın.</h1><p>Modellerini kaydet, fotoğraflarını sakla ve alışverişte mükerrer alımlardan kaçın.</p></section>
-<section class="stats">
-<div class="stat"><strong id="totalCars">0</strong><small>Model kaydı</small></div>
-<div class="stat"><strong id="rareCars">0</strong><small>TH / STH</small></div>
-<div class="stat"><strong id="totalSpend">0 ₺</strong><small>Toplam harcama</small></div>
-</section>
+<header>
+<div><div class="eyebrow">DIE-CAST COLLECTION</div><div class="brand">MY HOT WHEELS <span>GARAGE</span></div></div>
+<div class="logo">🏎</div>
+</header>
+
 <main>
-<section class="page active" id="collectionPage">
-<div class="sectionhead"><h2>Garajım</h2><button class="btn small" id="addBtn">＋ Araç ekle</button></div>
-<input class="search" id="search" placeholder="Model, seri, kod veya renk ara…">
-<div class="filters" id="filters">
-<button class="chip active" data-filter="Tümü">Tümü</button><button class="chip" data-filter="Mainline">Mainline</button><button class="chip" data-filter="Premium">Premium</button><button class="chip" data-filter="TH">TH</button><button class="chip" data-filter="STH">STH</button><button class="chip" data-filter="Diğer">Diğer</button>
+<section id="home" class="page active">
+<div class="hero">
+<h2>Koleksiyonuna hoş geldin.</h2>
+<p>Garajını oluştur, modellerini kaydet ve koleksiyonunu tek yerde takip et.</p>
 </div>
-<div class="grid" id="carGrid"></div>
+<div class="stats">
+<div class="stat"><strong id="totalCount">0</strong><small>TOPLAM ARAÇ</small></div>
+<div class="stat"><strong id="wishCount">0</strong><small>İSTEK LİSTESİ</small></div>
+<div class="stat"><strong id="totalValue">0 ₺</strong><small>KOLEKSİYON DEĞERİ</small></div>
+</div>
+<div class="sectionhead"><h2>Koleksiyonum</h2><button class="btn small" onclick="openAdd()">＋ Araç ekle</button></div>
+<input id="search" placeholder="Model, marka veya seri ara..." oninput="renderCars()">
+<div class="filters">
+<button class="chip active" data-filter="all" onclick="setFilter('all',this)">Tümü</button>
+<button class="chip" data-filter="mainline" onclick="setFilter('mainline',this)">Mainline</button>
+<button class="chip" data-filter="premium" onclick="setFilter('premium',this)">Premium</button>
+<button class="chip" data-filter="treasure" onclick="setFilter('treasure',this)">Treasure Hunt</button>
+<button class="chip" data-filter="super" onclick="setFilter('super',this)">Super TH</button>
+</div>
+<div id="carGrid" class="grid"></div>
 </section>
-<section class="page" id="wishlistPage">
-<div class="sectionhead"><h2>İstek listem</h2><button class="btn small" id="wishAdd">＋ Ekle</button></div><div id="wishList"></div>
+
+<section id="wishlist" class="page">
+<div class="sectionhead"><h2>İstek Listem</h2><button class="btn small" onclick="openAdd(true)">＋ Ekle</button></div>
+<div id="wishGrid" class="grid"></div>
 </section>
-<section class="page" id="backupPage">
-<div class="sectionhead"><h2>Yedekleme ve ayarlar</h2></div>
-<div class="notice">Kayıtlar ve fotoğraflar bu cihazdaki tarayıcı depolamasında tutulur. Safari verilerini silmek veya cihazı değiştirmek kayıtları silebilir. Düzenli yedek almanı öneririz.</div>
-<div class="listrow"><div><b>Yedek oluştur</b><small>Koleksiyon ve fotoğrafları JSON dosyası olarak dışa aktar.</small></div><button class="btn small" id="exportBtn">Dışa aktar</button></div>
-<div class="listrow"><div><b>Yedekten geri yükle</b><small>Daha önce oluşturduğun JSON yedeğini içe aktar.</small></div><button class="btn small secondary" id="importBtn">İçe aktar</button></div>
-<input type="file" id="importFile" accept=".json,application/json" hidden>
-<div class="listrow"><div><b>Veri durumu</b><small id="storageInfo">Bu cihazda saklanıyor.</small></div><span>📱</span></div>
-<div class="hint">Uygulama internet bağlantısı olmadan çalışacak şekilde tasarlanmıştır. Depolama kapasitesi cihazın ve tarayıcının kullanılabilir alanıyla sınırlıdır; teknik olarak sonsuz değildir.</div>
+
+<section id="stats" class="page">
+<div class="sectionhead"><h2>Garaj İstatistikleri</h2></div>
+<div class="stats">
+<div class="stat"><strong id="statCars">0</strong><small>ARAÇ SAYISI</small></div>
+<div class="stat"><strong id="statPremium">0</strong><small>PREMIUM</small></div>
+<div class="stat"><strong id="statTreasure">0</strong><small>TH / SUPER TH</small></div>
+</div>
+<div class="listrow"><span>Koleksiyonun toplam alış değeri</span><b id="statValue">0 ₺</b></div>
+<div class="listrow"><span>Ortalama araç maliyeti</span><b id="statAverage">0 ₺</b></div>
+</section>
+
+<section id="settings" class="page">
+<div class="sectionhead"><h2>Ayarlar ve Yedekleme</h2></div>
+<div class="listrow"><div><b>Verileri dışa aktar</b><div class="note">Koleksiyonunu JSON dosyası olarak yedekle.</div></div><button class="btn small" onclick="exportData()">Yedekle</button></div>
+<div class="listrow"><div><b>Yedekten geri yükle</b><div class="note">Daha önce aldığın JSON yedeğini içe aktar.</div></div><button class="btn small secondary" onclick="document.getElementById('importFile').click()">İçe aktar</button></div>
+<input id="importFile" type="file" accept=".json,application/json" hidden onchange="importData(event)">
+<hr>
+<p class="note">Kayıtların bu cihazın tarayıcısında saklanır. Safari verilerini veya site verilerini silersen kayıtların da silinebilir. Düzenli yedek almanı öneririz.</p>
 </section>
 </main>
 </div>
-<nav class="bottom"><div class="nav">
-<button class="active" data-page="collectionPage"><i>▦</i>Garajım</button>
-<button data-page="wishlistPage"><i>♡</i>İstek listem</button>
-<button data-page="backupPage"><i>⚙</i>Ayarlar</button>
-</div></nav>
-<dialog id="carDialog"><div class="modalhead"><h2 id="dialogTitle">Yeni araç</h2><button class="iconbtn" id="closeDialog">✕</button></div><div class="modalbody">
-<form id="carForm">
-<div class="field full"><label>ARAÇ FOTOĞRAFLARI (ÖN / ARKA / KART)</label><div class="photos" id="photoInputs"></div><div class="hint">Fotoğraflar cihazın yerel veritabanına kaydedilir. Birden fazla fotoğraf seçebilirsin.</div></div>
-<div class="formgrid">
-<div class="field full"><label>MODEL / ARAÇ ADI *</label><input id="fName" required placeholder="Örn. '67 Camaro"></div>
-<div class="field"><label>SERİ</label><input id="fSeries" placeholder="Örn. Car Culture"></div>
-<div class="field"><label>ÜRETİM YILI</label><input id="fYear" type="number" min="1968" max="2100" placeholder="2025"></div>
-<div class="field"><label>MODEL KODU</label><input id="fCode" placeholder="Örn.  H case / 123"></div>
-<div class="field"><label>RENK / VARYANT</label><input id="fColor" placeholder="Örn. Kırmızı"></div>
-<div class="field"><label>KATEGORİ</label><select id="fCategory"><option>Mainline</option><option>Premium</option><option>TH</option><option>STH</option><option>Diğer</option></select></div>
-<div class="field"><label>ADET</label><input id="fQty" type="number" min="1" value="1"></div>
-<div class="field"><label>ALIŞ FİYATI (₺)</label><input id="fPrice" type="number" min="0" step="0.01" placeholder="0"></div>
-<div class="field"><label>ALIŞ TARİHİ</label><input id="fDate" type="date"></div>
-<div class="field"><label>KONDISYON</label><select id="fCondition"><option>Kartlı - kapalı</option><option>Kartlı - açık</option><option>Kartsız</option><option>Kullanılmış</option></select></div>
-<div class="field full"><label>NOTLAR</label><textarea id="fNotes" placeholder="Satın aldığın yer, varyant ayrıntısı…"></textarea></div>
+
+<nav class="bottom">
+<div class="nav">
+<button class="active" onclick="showPage('home',this)"><i>🏠</i>Garajım</button>
+<button onclick="showPage('wishlist',this)"><i>❤️</i>İsteklerim</button>
+<button onclick="showPage('stats',this)"><i>📊</i>İstatistik</button>
+<button onclick="showPage('settings',this)"><i>⚙️</i>Ayarlar</button>
 </div>
-<div id="duplicateNotice" class="notice" hidden></div>
-<div class="actions"><button type="button" class="btn secondary" id="cancelForm">Vazgeç</button><button type="submit" class="btn">Kaydet</button></div>
-</form></div></dialog>
-<dialog id="wishDialog"><div class="modalhead"><h2>İstek listesine ekle</h2><button class="iconbtn" id="closeWish">✕</button></div><div class="modalbody"><div class="field"><label>ARADIĞIN MODEL</label><input id="wishName" placeholder="Model adı"></div><div class="field"><label>NOT</label><input id="wishNote" placeholder="Renk, seri, kod…"></div><button class="btn" id="saveWish">Listeye ekle</button></div></dialog>
-<div class="toast" id="toast"></div>
+</nav>
+
+<div id="modal" class="modal">
+<div class="modalbox">
+<div class="modalhead"><h2 id="modalTitle">Yeni araç</h2><button class="close" onclick="closeModal()">×</button></div>
+<form id="carForm">
+<input type="hidden" id="carId">
+<input type="hidden" id="isWish">
+<label>Model adı *</label><input id="name" required placeholder="Örn. Nissan Skyline GT-R">
+<label>Marka</label><input id="brand" placeholder="Örn. Nissan">
+<label>Seri</label><input id="series" placeholder="Örn. Fast & Furious">
+<label>Kategori</label>
+<select id="category">
+<option value="mainline">Mainline</option>
+<option value="premium">Premium</option>
+<option value="treasure">Treasure Hunt</option>
+<option value="super">Super Treasure Hunt</option>
+<option value="other">Diğer</option>
+</select>
+<label>Üretim yılı</label><input id="year" type="number" placeholder="2026">
+<label>Renk</label><input id="color" placeholder="Örn. Kırmızı">
+<label>Satın alma fiyatı (₺)</label><input id="price" type="number" min="0" step="0.01" placeholder="0">
+<label>Notlar</label><textarea id="notes" rows="3" placeholder="Model hakkında notların..."></textarea>
+<label>Fotoğraf</label><input id="photoInput" type="file" accept="image/*">
+<img id="photoPreview" class="preview" hidden>
+<div class="formactions"><button type="button" class="btn secondary" onclick="closeModal()">İptal</button><button type="submit" class="btn">Kaydet</button></div>
+</form>
+</div>
+</div>
+
 <script>
-const DB_NAME='MyHotWheelsGarageDB', DB_VERSION=1, STORE='cars', WISH='wishlist';
-let db, currentFilter='Tümü', editingId=null, draftPhotos=[];
-const $=id=>document.getElementById(id);
-function toast(msg){$('toast').textContent=msg;$('toast').style.display='block';setTimeout(()=>$('toast').style.display='none',2600)}
-function openDB(){return new Promise((resolve,reject)=>{const req=indexedDB.open(DB_NAME,DB_VERSION);req.onupgradeneeded=()=>{const d=req.result;if(!d.objectStoreNames.contains(STORE)){const s=d.createObjectStore(STORE,{keyPath:'id',autoIncrement:true});s.createIndex('name','name');}if(!d.objectStoreNames.contains(WISH))d.createObjectStore(WISH,{keyPath:'id',autoIncrement:true});};req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error);});}
-function tx(store,mode='readonly'){return db.transaction(store,mode).objectStore(store)}
-function all(store){return new Promise((res,rej)=>{const r=tx(store).getAll();r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
-function put(store,obj){return new Promise((res,rej)=>{const r=tx(store,'readwrite').put(obj);r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
-function del(store,id){return new Promise((res,rej)=>{const r=tx(store,'readwrite').delete(id);r.onsuccess=()=>res();r.onerror=()=>rej(r.error)})}
-function key(c){return [c.name,c.code,c.color].map(x=>(x||'').trim().toLocaleLowerCase('tr')).join('|')}
-function esc(s=''){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function money(n){return (Number(n)||0).toLocaleString('tr-TR',{maximumFractionDigits:2})+' ₺'}
-async function render(){
- const cars=await all(STORE), wishes=await all(WISH);
- $('totalCars').textContent=cars.reduce((n,c)=>n+(Number(c.qty)||1),0);
- $('rareCars').textContent=cars.filter(c=>['TH','STH'].includes(c.category)).reduce((n,c)=>n+(Number(c.qty)||1),0);
- $('totalSpend').textContent=money(cars.reduce((n,c)=>n+(Number(c.price)||0)*(Number(c.qty)||1),0));
- const q=$('search').value.trim().toLocaleLowerCase('tr');
- const filtered=cars.filter(c=>(currentFilter==='Tümü'||c.category===currentFilter)&&[c.name,c.series,c.code,c.color,c.year].join(' ').toLocaleLowerCase('tr').includes(q)).sort((a,b)=>a.name.localeCompare(b.name,'tr'));
- $('carGrid').innerHTML=filtered.length?filtered.map(c=>`<article class="car"><div class="photo">${c.photos?.length?`<img src="${URL.createObjectURL(c.photos[0])}" alt="${esc(c.name)}">`:'<div class="placeholder">🏎</div>'}</div><div class="carbody"><div class="carname">${esc(c.name)}</div><div class="meta">${esc(c.series||'Seri belirtilmedi')} ${c.year?'· '+esc(c.year):''}</div><div class="tags"><span class="tag">${esc(c.category||'Diğer')}</span>${c.color?`<span class="tag">${esc(c.color)}</span>`:''}</div><div class="carfoot"><span class="price">${money(c.price)}</span><span><button class="iconbtn" data-edit="${c.id}" aria-label="Düzenle">✎</button> <button class="iconbtn" data-del="${c.id}" aria-label="Sil">⌫</button></span></div></div></article>`).join(''):'<div class="empty"><b>Garajın henüz boş</b>İlk Hot Wheels aracını ekleyerek koleksiyonunu oluşturmaya başla.</div>';
- $('wishList').innerHTML=wishes.length?wishes.map(w=>`<div class="listrow"><div><b>${esc(w.name)}</b><small>${esc(w.note||'')}</small></div><button class="iconbtn" data-wdel="${w.id}">✕</button></div>`).join(''):'<div class="empty"><b>İstek listen boş</b>Almak istediğin modelleri buraya ekle.</div>';
- $('storageInfo').textContent=`${cars.length} model kaydı · ${wishes.length} istek · cihaz içi veritabanı`;
+/* Eski Service Worker kayıtlarını kaldırır; koleksiyon veritabanına dokunmaz. */
+if("serviceWorker" in navigator){
+navigator.serviceWorker.getRegistrations().then(function(regs){
+regs.forEach(function(reg){reg.unregister();});
+}).catch(function(){});
 }
-function openForm(car=null){
- editingId=car?.id??null;draftPhotos=car?.photos?[...car.photos]:[];
- $('dialogTitle').textContent=car?'Aracı düzenle':'Yeni araç';
- $('fName').value=car?.name||'';$('fSeries').value=car?.series||'';$('fYear').value=car?.year||'';$('fCode').value=car?.code||'';$('fColor').value=car?.color||'';$('fCategory').value=car?.category||'Mainline';$('fQty').value=car?.qty||1;$('fPrice').value=car?.price||'';$('fDate').value=car?.date||'';$('fCondition').value=car?.condition||'Kartlı - kapalı';$('fNotes').value=car?.notes||'';
- $('duplicateNotice').hidden=true;renderPhotoInputs();$('carDialog').showModal();
-}
-function renderPhotoInputs(){
- $('photoInputs').innerHTML=draftPhotos.map((p,i)=>`<div class="photoadd"><img src="${URL.createObjectURL(p)}"><button type="button" data-phdel="${i}" style="position:absolute;top:3px;right:3px;background:#111b;color:white;border:0;border-radius:50%">×</button></div>`).join('')+`<label class="photoadd"><span style="font-size:26px">＋</span><input id="photoPicker" type="file" accept="image/*" multiple></label>`;
- $('photoPicker').addEventListener('change',async e=>{for(const f of e.target.files){if(f.type.startsWith('image/'))draftPhotos.push(f);}renderPhotoInputs();});
-}
-$('photoInputs').addEventListener('click',e=>{const b=e.target.closest('[data-phdel]');if(b){draftPhotos.splice(Number(b.dataset.phdel),1);renderPhotoInputs()}});
-$('addBtn').onclick=()=>openForm();$('closeDialog').onclick=$('cancelForm').onclick=()=>$('carDialog').close();
-$('carForm').onsubmit=async e=>{
- e.preventDefault();
- const car={
-name:$('fName').value.trim(),
-series:$('fSeries').value.trim(),
-year:$('fYear').value,
-code:$('fCode').value.trim(),
-color:$('fColor').value.trim(),
-category:$('fCategory').value,
-qty:Math.max(1,Number($('fQty').value)||1),
-price:Number($('fPrice').value)||0,
-date:$('fDate').value,
-condition:$('fCondition').value,
-notes:$('fNotes').value.trim(),
-photos:draftPhotos
-};
-if(editingId!==null) car.id=editingId;
- const cars=await all(STORE), dup=cars.find(c=>c.id!==editingId&&key(c)===key(car));
- if(dup){$('duplicateNotice').hidden=false;$('duplicateNotice').textContent=`Mükerrer kontrolü: Garajında "${dup.name}" kaydı zaten var. Renk ve model kodunu kontrol et. Farklı varyantsa bilgileri ayırt edici şekilde gir.`;return;}
- await put(STORE,car);$('carDialog').close();await render();toast(editingId?'Araç güncellendi':'Araç garaja eklendi');
-};
-$('carGrid').addEventListener('click',async e=>{
- const edit=e.target.closest('[data-edit]'), delb=e.target.closest('[data-del]');
- if(edit){const c=(await all(STORE)).find(x=>x.id===Number(edit.dataset.edit));openForm(c);}
- if(delb&&confirm('Bu aracı ve fotoğraflarını silmek istiyor musun?')){await del(STORE,Number(delb.dataset.del));render();toast('Araç silindi');}
+if("caches" in window){
+caches.keys().then(function(keys){
+keys.forEach(function(key){
+if(key.indexOf("my-hw-garage")===0){caches.delete(key);}
 });
-$('search').oninput=render;
-$('filters').onclick=e=>{const b=e.target.closest('[data-filter]');if(!b)return;currentFilter=b.dataset.filter;document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('active',x===b));render()};
-document.querySelector('.nav').onclick=e=>{const b=e.target.closest('[data-page]');if(!b)return;document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',x.id===b.dataset.page));};
-$('wishAdd').onclick=()=>$('wishDialog').showModal();$('closeWish').onclick=()=>$('wishDialog').close();
-$('saveWish').onclick=async()=>{const name=$('wishName').value.trim();if(!name)return toast('Model adını yaz.');await put(WISH,{name,note:$('wishNote').value.trim()});$('wishName').value='';$('wishNote').value='';$('wishDialog').close();render();toast('İstek listesine eklendi')};
-$('wishList').addEventListener('click',async e=>{const b=e.target.closest('[data-wdel]');if(b){await del(WISH,Number(b.dataset.wdel));render()}});
-$('exportBtn').onclick=async()=>{
- const cars=await all(STORE),wishes=await all(WISH);
- const serialCars=await Promise.all(cars.map(async c=>({...c,photos:await Promise.all((c.photos||[]).map(blob=>new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result);r.onerror=rej;r.readAsDataURL(blob)})))})));
- const blob=new Blob([JSON.stringify({app:'My Hot Wheels Garage',version:1,exportedAt:new Date().toISOString(),cars:serialCars,wishes},null,2)],{type:'application/json'});
- const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='my-hot-wheels-garage-yedek.json';a.click();URL.revokeObjectURL(url);toast('Yedek dosyası hazır');
+}).catch(function(){});
+}
+
+var DB_NAME="MyHotWheelsGarageDB";
+var DB_VERSION=1;
+var db=null;
+var filter="all";
+var draftPhoto=null;
+var currentPhotoUrl=null;
+
+function openDB(){
+return new Promise(function(resolve,reject){
+var request=indexedDB.open(DB_NAME,DB_VERSION);
+request.onupgradeneeded=function(e){
+var database=e.target.result;
+if(!database.objectStoreNames.contains("cars")){
+database.createObjectStore("cars",{keyPath:"id",autoIncrement:true});
+}
+if(!database.objectStoreNames.contains("wishlist")){
+database.createObjectStore("wishlist",{keyPath:"id",autoIncrement:true});
+}
 };
-$('importBtn').onclick=()=>$('importFile').click();
-$('importFile').onchange=async e=>{
- const f=e.target.files[0];if(!f)return;
- try{const data=JSON.parse(await f.text());if(!Array.isArray(data.cars))throw Error('Geçersiz yedek');if(!confirm('Yedek içeri aktarılsın mı? Mevcut kayıtlarla birleştirilecek.'))return;
- for(const c of data.cars){const photos=[];for(const p of c.photos||[]){const r=await fetch(p);photos.push(await r.blob())}const {id,...rest}=c;await put(STORE,{...rest,photos});}
- for(const w of data.wishes||[]){const {id,...rest}=w;await put(WISH,rest)}await render();toast('Yedek geri yüklendi');
- }catch(err){alert('Yedek okunamadı: '+err.message)}finally{e.target.value=''}
-(async()=>{
-  try{
-    if(!window.indexedDB){
-      throw new Error('IndexedDB kullanılamıyor.');
-    db = await openDB();
-    await render();
-  }catch(e){
-    console.error('Garage başlatma hatası:', e);
-    alert('Uygulama başlatılamadı: ' + e.message);
+request.onsuccess=function(){resolve(request.result);};
+request.onerror=function(){reject(request.error);};
+request.onblocked=function(){reject(new Error("Veritabanı başka bir sekmede açık. Diğer sekmeleri kapatıp tekrar dene."));};
+});
+}
+
+function store(name,mode){
+return db.transaction(name,mode).objectStore(name);
+}
+function getAll(name){
+return new Promise(function(resolve,reject){
+var r=store(name,"readonly").getAll();
+r.onsuccess=function(){resolve(r.result||[]);};
+r.onerror=function(){reject(r.error);};
+});
+}
+function save(name,item){
+return new Promise(function(resolve,reject){
+var r=store(name,"readwrite").put(item);
+r.onsuccess=function(){resolve(r.result);};
+r.onerror=function(){reject(r.error);};
+});
+}
+function remove(name,id){
+return new Promise(function(resolve,reject){
+var r=store(name,"readwrite").delete(Number(id));
+r.onsuccess=function(){resolve();};
+r.onerror=function(){reject(r.error);};
+});
+
+}
+function getOne(name,id){
+return new Promise(function(resolve,reject){
+var r=store(name,"readonly").get(Number(id));
+r.onsuccess=function(){resolve(r.result);};
+r.onerror=function(){reject(r.error);};
+});
+}
+function esc(value){
+return String(value==null?"":value).replace(/[&<>"']/g,function(c){
+return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+});
+}
+function money(value){
+return (Number(value)||0).toLocaleString("tr-TR",{maximumFractionDigits:2})+" ₺";
+}
+function categoryName(value){
+var names={mainline:"Mainline",premium:"Premium",treasure:"Treasure Hunt",super:"Super TH",other:"Diğer"};
+return names[value]||"Diğer";
+}
+function photoURL(photo){
+if(!photo)return "";
+try{return URL.createObjectURL(photo);}catch(e){return "";}
+}
+function carCard(car,wish){
+var photo=photoURL(car.photo);
+var html='<article class="car"><div class="photo">';
+html+=photo?'<img src="'+photo+'" alt="">':'<span class="placeholder">🏎</span>';
+html+='</div><div class="carbody"><div class="carname">'+esc(car.name)+'</div>';
+html+='<div class="meta">'+esc(car.brand||"Marka belirtilmedi")+'</div>';
+html+='<div class="meta">'+esc(car.series||"Seri belirtilmedi")+(car.year?" · "+esc(car.year):"")+'</div>';
+html+='<div class="tags"><span class="tag">'+esc(categoryName(car.category))+'</span>';
+if(car.color)html+='<span class="tag">'+esc(car.color)+'</span>';
+html+='</div><div class="carfoot"><span class="price">'+money(car.price)+'</span>';
+html+='<div><button class="iconbtn" onclick="editCar('+car.id+','+wish+')">✎</button> ';
+html+='<button class="iconbtn" onclick="deleteCar('+car.id+','+wish+')">×</button></div></div></div></article>';
+return html;
+}
+async function renderCars(){
+if(!db)return;
+var cars=await getAll("cars");
+var query=document.getElementById("search").value.toLocaleLowerCase("tr-TR");
+var filtered=cars.filter(function(car){
+var matches=filter==="all"||car.category===filter;
+var text=[car.name,car.brand,car.series,car.color].join(" ").toLocaleLowerCase("tr-TR");
+return matches&&text.indexOf(query)!==-1;
+});
+document.getElementById("carGrid").innerHTML=filtered.length?filtered.map(function(c){return carCard(c,false);}).join(""):'<div class="empty">Henüz araç eklenmemiş.<br>İlk modelini ekleyerek garajını oluşturmaya başla.</div>';
+await updateStats(cars);
+}
+async function renderWishes(){
+var wishes=await getAll("wishlist");
+document.getElementById("wishGrid").innerHTML=wishes.length?wishes.map(function(c){return carCard(c,true);}).join(""):'<div class="empty">İstek listen henüz boş.</div>';
+document.getElementById("wishCount").textContent=wishes.length;
+}
+async function updateStats(cars){
+var wishes=await getAll("wishlist");
+var total=cars.reduce(function(sum,c){return sum+(Number(c.price)||0);},0);
+var premium=cars.filter(function(c){return c.category==="premium";}).length;
+var treasure=cars.filter(function(c){return c.category==="treasure"||c.category==="super";}).length;
+document.getElementById("totalCount").textContent=cars.length;
+document.getElementById("wishCount").textContent=wishes.length;
+document.getElementById("totalValue").textContent=money(total);
+document.getElementById("statCars").textContent=cars.length;
+document.getElementById("statPremium").textContent=premium;
+document.getElementById("statTreasure").textContent=treasure;
+document.getElementById("statValue").textContent=money(total);
+document.getElementById("statAverage").textContent=money(cars.length?total/cars.length:0);
+}
+function setFilter(value,button){
+filter=value;
+document.querySelectorAll(".chip").forEach(function(b){b.classList.remove("active");});
+button.classList.add("active");
+renderCars();
+}
+function showPage(id,button){
+document.querySelectorAll(".page").forEach(function(p){p.classList.remove("active");});
+document.getElementById(id).classList.add("active");
+document.querySelectorAll(".nav button").forEach(function(b){b.classList.remove("active");});
+button.classList.add("active");
+if(id==="wishlist")renderWishes();
+if(id==="home")renderCars();
+}
+function openAdd(wish){
+document.getElementById("carForm").reset();
+document.getElementById("carId").value="";
+document.getElementById("isWish").value=wish?"1":"0";
+document.getElementById("modalTitle").textContent=wish?"İstek listesine ekle":"Yeni araç ekle";
+document.getElementById("photoPreview").hidden=true;
+document.getElementById("photoPreview").src="";
+draftPhoto=null;
+document.getElementById("modal").classList.add("open");
+}
+function closeModal(){
+document.getElementById("modal").classList.remove("open");
+draftPhoto=null;
+}
+async function editCar(id,wish){
+var item=await getOne(wish?"wishlist":"cars",id);
+if(!item)return;
+openAdd(wish);
+document.getElementById("modalTitle").textContent="Aracı düzenle";
+document.getElementById("carId").value=item.id;
+["name","brand","series","category","year","color","price","notes"].forEach(function(key){
+document.getElementById(key).value=item[key]||"";
+});
+draftPhoto=item.photo||null;
+if(draftPhoto){
+var url=photoURL(draftPhoto);
+var preview=document.getElementById("photoPreview");
+preview.src=url;
+preview.hidden=false;
+}
+}
+async function deleteCar(id,wish){
+if(!confirm("Bu kaydı silmek istediğine emin misin?"))return;
+await remove(wish?"wishlist":"cars",id);
+await renderCars();
+await renderWishes();
+}
+document.getElementById("photoInput").addEventListener("change",function(e){
+var file=e.target.files&&e.target.files[0];
+if(!file)return;
+if(file.size>8*1024*1024){
+alert("Fotoğraf en fazla 8 MB olabilir.");
+e.target.value="";
+return;
+}
+draftPhoto=file;
+var preview=document.getElementById("photoPreview");
+if(currentPhotoUrl)URL.revokeObjectURL(currentPhotoUrl);
+currentPhotoUrl=URL.createObjectURL(file);
+preview.src=currentPhotoUrl;
+preview.hidden=false;
+});
+document.getElementById("carForm").addEventListener("submit",async function(e){
+e.preventDefault();
+try{
+var wish=document.getElementById("isWish").value==="1";
+var id=document.getElementById("carId").value;
+var old=id?await getOne(wish?"wishlist":"cars",id):null;
+var item={
+name:document.getElementById("name").value.trim(),
+brand:document.getElementById("brand").value.trim(),
+series:document.getElementById("series").value.trim(),
+category:document.getElementById("category").value,
+year:document.getElementById("year").value,
+color:document.getElementById("color").value.trim(),
+price:Number(document.getElementById("price").value)||0,
+notes:document.getElementById("notes").value.trim(),
+photo:draftPhoto||null,
+created:old?old.created:Date.now()
+};
+if(!item.name){alert("Model adını yazmalısın.");return;}
+if(id)item.id=Number(id);
+await save(wish?"wishlist":"cars",item);
+closeModal();
+await renderCars();
+await renderWishes();
+alert("Kayıt başarıyla kaydedildi.");
+}catch(err){alert("Kayıt sırasında hata oluştu: "+err.message);}
+});
+document.getElementById("modal").addEventListener("click",function(e){
+if(e.target===this)closeModal();
+});
+
+function blobToDataURL(blob){
+return new Promise(function(resolve,reject){
+if(!blob){resolve(null);return;}
+var reader=new FileReader();
+reader.onload=function(){resolve(reader.result);};
+reader.onerror=function(){reject(reader.error);};
+reader.readAsDataURL(blob);
+});
+}
+function dataURLToBlob(data){
+if(!data)return null;
+var parts=data.split(",");
+var mime=(parts[0].match(/:(.*?);/)||[])[1]||"image/jpeg";
+var binary=atob(parts[1]);
+var bytes=new Uint8Array(binary.length);
+for(var i=0;i<binary.length;i++)bytes[i]=binary.charCodeAt(i);
+return new Blob([bytes],{type:mime});
+}
+async function exportData(){
+try{
+var cars=await getAll("cars");
+var wishes=await getAll("wishlist");
+for(var i=0;i<cars.length;i++)cars[i].photo=await blobToDataURL(cars[i].photo);
+for(var j=0;j<wishes.length;j++)wishes[j].photo=await blobToDataURL(wishes[j].photo);
+var backup={app:"My Hot Wheels Garage",version:1,date:new Date().toISOString(),cars:cars,wishlist:wishes};
+var blob=new Blob([JSON.stringify(backup)],{type:"application/json"});
+var url=URL.createObjectURL(blob);
+var a=document.createElement("a");
+a.href=url;a.download="my-hot-wheels-garage-yedek.json";
+document.body.appendChild(a);a.click();a.remove();
+setTimeout(function(){URL.revokeObjectURL(url);},2000);
+}catch(e){alert("Yedek oluşturulamadı: "+e.message);}
+}
+function readFile(file){
+return new Promise(function(resolve,reject){
+var reader=new FileReader();
+reader.onload=function(){resolve(reader.result);};
+reader.onerror=function(){reject(reader.error);};
+reader.readAsText(file);
+});
+}
+async function importData(event){
+var file=event.target.files&&event.target.files[0];
+if(!file)return;
+if(!confirm("Yedekteki kayıtlar mevcut kayıtların üzerine eklenecek. Devam edilsin mi?")){
+event.target.value="";return;
+}
+try{
+var data=JSON.parse(await readFile(file));
+if(!data||!Array.isArray(data.cars)||!Array.isArray(data.wishlist))throw new Error("Yedek dosyası geçersiz.");
+for(var i=0;i<data.cars.length;i++){
+var c=data.cars[i];delete c.id;c.photo=dataURLToBlob(c.photo);await save("cars",c);
+}
+for(var j=0;j<data.wishlist.length;j++){
+var w=data.wishlist[j];delete w.id;w.photo=dataURLToBlob(w.photo);await save("wishlist",w);
+}
+alert("Yedek başarıyla geri yüklendi.");
+await renderCars();await renderWishes();
+}catch(e){alert("Yedek yüklenemedi: "+e.message);}
+event.target.value="";
+}
+
+async function startApp(){
+try{
+if(!window.indexedDB)throw new Error("Bu tarayıcı IndexedDB desteklemiyor.");
+db=await openDB();
+await renderCars();
+await renderWishes();
+}catch(e){
+console.error(e);
+alert("Uygulama başlatılamadı: "+e.message);
+}
+}
+startApp();
 </script>
 </body>
 </html>
