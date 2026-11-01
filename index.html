@@ -158,6 +158,23 @@ $('importFile').onchange=async e=>{
  for(const w of data.wishes||[]){const {id,...rest}=w;await put(WISH,rest)}await render();toast('Yedek geri yüklendi');
  }catch(err){alert('Yedek okunamadı: '+err.message)}finally{e.target.value=''}
 };
-(async()=>{try{db=await openDB();await render();if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{});}catch(e){alert('Yerel kayıt açılamadı. Safari ile HTTPS üzerinden açtığından emin ol. '+e.message)}})();
+((async()=>{
+ try{
+  if(!window.indexedDB){
+   throw new Error('Safari IndexedDB desteği kullanılamıyor.');
+  }
+
+  db=await openDB();
+  await render();
+
+  if('serviceWorker' in navigator){
+   navigator.serviceWorker.register('./sw.js').catch(console.error);
+  }
+
+ }catch(e){
+  console.error('Garage başlatma hatası:',e);
+  alert('Uygulama başlatılamadı: '+e.message);
+ }
+})();
 </script>
 </body></html>
